@@ -10,7 +10,7 @@
 
 ## 🌟 Live Demo Access
 
-- **Localhost URL**: [http://localhost:3000](http://localhost:3000)
+- **Localhost URL of the website**: [http://localhost:3000](http://localhost:3000)
 - **IP Loopback**: [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
 ---
