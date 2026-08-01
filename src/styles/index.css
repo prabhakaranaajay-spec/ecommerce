@@ -1,0 +1,208 @@
+/* ==========================================================================
+   MAISON DE L'ÉLÉGANCE - LUXURY DRESS SHOWROOM DESIGN SYSTEM
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-obsidian: #0b0c10;
+  --bg-card: #15171e;
+  --bg-card-hover: #1c1f29;
+  --bg-overlay: rgba(11, 12, 16, 0.85);
+  
+  --gold-primary: #d4af37;
+  --gold-hover: #e5c158;
+  --gold-light: rgba(212, 175, 55, 0.15);
+  --gold-glow: rgba(212, 175, 55, 0.35);
+
+  --text-main: #f5f5f7;
+  --text-muted: #9ba1b0;
+  --text-gold: #e5c158;
+
+  --crimson-heart: #e63946;
+  --crimson-glow: rgba(230, 57, 70, 0.4);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-gold: rgba(212, 175, 55, 0.3);
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Utility */
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(21, 23, 30, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-nav {
+  background: rgba(11, 12, 16, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #f3e5ab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes popHeart {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in { animation: fadeIn var(--transition-normal) forwards; }
+.animate-heart-pop { animation: popHeart var(--transition-bounce); }
+
+/* Button Component Styles */
+.btn-gold {
+  background: linear-gradient(135deg, #d4af37 0%, #b89228 100%);
+  color: #000000;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.75rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 20px var(--gold-glow);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #e5c158 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-gold);
+  padding: 0.85rem 1.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold-primary);
+  background: var(--gold-light);
+  color: var(--gold-hover);
+}
+
+.heart-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(11, 12, 16, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.heart-btn:hover {
+  background: rgba(230, 57, 70, 0.2);
+  border-color: var(--crimson-heart);
+  color: var(--crimson-heart);
+  transform: scale(1.1);
+}
+
+.heart-btn.active {
+  background: var(--crimson-heart);
+  color: #ffffff;
+  border-color: var(--crimson-heart);
+  box-shadow: 0 0 16px var(--crimson-glow);
+}
+
+/* Gallery Zoom Container */
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+  border-radius: 8px;
+}
+
+.zoom-container img {
+  transition: transform 0.4s ease-out;
+  transform-origin: center center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.zoom-container:hover img {
+  transform: scale(1.45);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e3d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
